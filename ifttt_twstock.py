@@ -2,13 +2,15 @@ import twstock
 import requests
 import time
 
+
+
 #計算發送次數
 counterLine = 0
 #計算錯誤次數
 counterError = 0
 
 print('Get ready!')
-#True for what?
+#無限迴圈
 while True:
     #取得即時股價
     realdata = twstock.realtime.get('2356')
@@ -32,13 +34,11 @@ while True:
         
         
         
-        
+        #設定只傳送7次通知
         if counterLine >= 7:
             print('Have a nice day')
             break
-        #? 每五分鐘讀一次
-        # for i in range(300):
-        #     time.sleep(300)
+        
 
     #列出錯誤訊息，且錯誤超過三次則中斷
     else:
@@ -47,8 +47,6 @@ while True:
         if counterError >=3:
             print('維護中，請稍等')
             break
-        #?每五分鐘讀一次
-        # for i in range(300):
-        #     time.sleep(300)
+        
 
         
